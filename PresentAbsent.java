@@ -13,7 +13,8 @@ class Employee {
 	private static final int empPresent = 1;
 	private static final int empPartTime=0;
 	private static final int empPartTimeHrs=4;
-
+	private static final int WorkingDayParMonth = 20;
+	
 	// CREATED CONSTRUCTOR
 	public Employee() {
 
@@ -26,15 +27,17 @@ class Employee {
 		switch (empCheck) //if random value is 1 then employee full time
 		{
 		case empPresent:
-			int dailyWage = FullDay*WageParHour;
+			
+			int dailyWage = FullDay*WageParHour*WorkingDayParMonth;
 			Log.info("Employee is Full Time Present");
-			Log.info("Employee Daily Wage Is : "+ dailyWage);
+			Log.info("Employee Daily 20 Day Wage Is : "+ dailyWage);
+			
 			break;
 
 		case empPartTime: //if random value is 0 then employee is part time
-			int partTimeWage=empPartTimeHrs*WageParHour;
+			int partTimeWage=empPartTimeHrs*WageParHour*WorkingDayParMonth;
 			Log.info("Employee is Part Time Present");
-			Log.info("Employee Daily Wage Is : "+ partTimeWage);
+			Log.info("Employee Part Time 20 Day Wage Is : "+ partTimeWage);
 			break;
 
 
