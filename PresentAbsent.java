@@ -14,7 +14,7 @@ class Employee {
 	private static final int empPartTime=0;
 	private static final int empPartTimeHrs=4;
 	private static final int WorkingDayParMonth = 20;
-	
+	private static final int WarkingHourDay = 100;
 	// CREATED CONSTRUCTOR
 	public Employee() {
 
@@ -28,16 +28,16 @@ class Employee {
 		{
 		case empPresent:
 			
-			int dailyWage = FullDay*WageParHour*WorkingDayParMonth;
+			int dailyWage = FullDay*WorkingDayParMonth*WarkingHourDay;
 			Log.info("Employee is Full Time Present");
-			Log.info("Employee Daily 20 Day Wage Is : "+ dailyWage);
+			Log.info("Employee Daily 20 Day and 100 Hrs Wage Is : "+ dailyWage);
 			
 			break;
 
 		case empPartTime: //if random value is 0 then employee is part time
-			int partTimeWage=empPartTimeHrs*WageParHour*WorkingDayParMonth;
+			int partTimeWage=empPartTimeHrs*WorkingDayParMonth*WarkingHourDay;
 			Log.info("Employee is Part Time Present");
-			Log.info("Employee Part Time 20 Day Wage Is : "+ partTimeWage);
+			Log.info("Employee Part Time 20 Day and 100 Hrs Wage Is : "+ partTimeWage);
 			break;
 
 
