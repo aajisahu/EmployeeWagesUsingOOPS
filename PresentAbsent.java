@@ -7,31 +7,32 @@ class Employee {
 
 	private static final Logger Log= LogManager.getLogger(PresentAbsent.class);
 
-	//Constrants declaration
-	private static final int FullDay = 8;
-	private static final int WageParHour = 20;
-	private static final int empPresent = 1;
-	private static final int empPartTime=0;
-	private static final int empPartTimeHrs=4;
-	private static final int WorkingDayParMonth = 20;
-	private static final int WarkingHourDay = 100;
-	// CREATED CONSTRUCTOR
-	public Employee() {
+	final int FullDay = 8;
+	final int WageParHour = 20;
+	final int empPresent = 1;
+	final int empPartTime=0;
+	final int empPartTimeHrs=4;
+	final int WorkingDayParMonth = 20;
+	final int WarkingHourDay = 100;
+
+
+
+	public void Compute() {
 
 		//Generating random value from 0 to 2
 		int empCheck = (int)Math.floor(Math.random() * 10) % 3;
 
-		Log.info("**** Using Switch Statements ****");
-		Log.info("");
-		
+		Log.info("**** Using Class and Method ****");
+		System.out.println();
+
 		switch (empCheck) //if random value is 1 then employee full time
 		{
 		case empPresent:
-			
+
 			int dailyWage = FullDay*WorkingDayParMonth*WarkingHourDay;
 			Log.info("Employee is Full Time Present");
 			Log.info("Employee Daily 20 Day and 100 Hrs Wage Is : "+ dailyWage);
-			
+
 			break;
 
 		case empPartTime: //if random value is 0 then employee is part time
@@ -43,7 +44,7 @@ class Employee {
 
 		default://if random value is 2 then employee is absent
 			Log.info("Employee is Absent");
-		
+
 		}
 
 	}
@@ -51,7 +52,9 @@ class Employee {
 
 public  class PresentAbsent{
 	public static void main(String[] args) {
-		new  Employee();//CREATING OBJECT OF THE CLASS SO CONSTRUCTOR AUTOMATICALLY CALLED
+		Employee object=new  Employee();
+		object.Compute();
+
 	}  
-	
+
 }
