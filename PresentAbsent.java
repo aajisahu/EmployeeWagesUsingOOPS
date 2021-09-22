@@ -1,5 +1,6 @@
 package Day8_Programs;
 
+import java.util.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -51,10 +52,26 @@ class Employee {
 }
 
 public  class PresentAbsent{
+	private static final Logger Log= LogManager.getLogger(PresentAbsent.class);
 	public static void main(String[] args) {
+		Scanner multiple=new Scanner(System.in);
+		int countCompany=0;
+		
+		Log.info("Compute Employee Wage for multiple companies \n Select how many company");
+		int mul=multiple.nextInt();
+		multiple.close();
+		
+		
+		//it will generate employee wages for number of time user want ro perform
+		while(mul !=0) {
+		countCompany=countCompany+1;
+		
+		Log.info("");
+		Log.info("Compony :"+countCompany);
 		Employee object=new  Employee();
 		object.Compute();
-
+		mul--;
+		}
 	}  
 
 }
