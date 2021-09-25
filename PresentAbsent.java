@@ -11,14 +11,10 @@ interface EmployeeBuilder{
 	final int empPresent = 1;
 	final int empPartTime=0;
 	final int empPartTimeHrs=4;
-	
-	
-	
 	public int Compute();
 	
 	
 }
-
 
 
 class Employee implements EmployeeBuilder  {
@@ -80,7 +76,7 @@ public  class PresentAbsent{
 		//taking user input
 
 		int countCompany=0;
-		int[]  arr= new int[999];
+		ArrayList<Integer> arr=new ArrayList<Integer>();  
 		int index=0;
 		//Increase the value and storing the result in to array
 
@@ -92,9 +88,10 @@ public  class PresentAbsent{
 
 			Log.info("Compony :"+countCompany);
 			Employee object=new  Employee();
-
-			arr[index]=object.Compute();//Storing the values in array
-			Log.info("Employee Working Day:"+object.WorkingDayParMonth+" \nEmployee working Hrs:"+object.WarkingHourDay+": "+ "\nTotal is: " + arr[index]);
+			
+			arr.add(object.Compute());		//Storing the values in array
+			
+			Log.info("Employee Working Day:"+object.WorkingDayParMonth+" \nEmployee working Hrs:"+object.WarkingHourDay+": "+ "\nTotal is: " +arr );
 			index++;//increasing array index value 
 			mul--;
 		}
