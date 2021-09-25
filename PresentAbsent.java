@@ -11,18 +11,23 @@ interface EmployeeBuilder{
 	final int empPresent = 1;
 	final int empPartTime=0;
 	final int empPartTimeHrs=4;
+
+
 	public int Compute();
-	
-	
+
+
 }
 
 
 class Employee implements EmployeeBuilder  {
 
 	private static final Logger Log= LogManager.getLogger(PresentAbsent.class);
-
 	static  int WorkingDayParMonth = 20;
 	static int WarkingHourDay = 100;
+	int storeDailyFullTime=8;
+	int storeDailyPartTime=4;
+	static int store;
+
 
 	public int Compute() {
 		Scanner sc=new Scanner(System.in);
@@ -43,16 +48,20 @@ class Employee implements EmployeeBuilder  {
 		{
 		case empPresent:
 
+			store=storeDailyFullTime*WageParHour;
+
 			int dailyWage = FullDay*WorkingDayParMonth*WarkingHourDay;
 			Log.info("Employee is Full Time Present");
-
+			Log.info("Daily Wage Full Time: "+Employee.store);
 			return dailyWage;
 
 
 		case empPartTime: //if random value is 0 then employee is part time
+
+			store=storeDailyPartTime*WageParHour;
 			int partTimeWage=empPartTimeHrs*WorkingDayParMonth*WarkingHourDay;
 			Log.info("Employee is Part Time Present");
-			
+			Log.info("Daily Wage Part Time: "+store );
 			return partTimeWage;
 
 
@@ -66,6 +75,9 @@ class Employee implements EmployeeBuilder  {
 }
 
 public  class PresentAbsent{
+
+
+
 	private static final Logger Log= LogManager.getLogger(PresentAbsent.class);
 
 	public static void main(String[] args) {
@@ -77,8 +89,9 @@ public  class PresentAbsent{
 
 		int countCompany=0;
 		ArrayList<Integer> arr=new ArrayList<Integer>();  
-		int index=0;
-		//Increase the value and storing the result in to array
+		ArrayList<Integer> dailyFullTime=new ArrayList<Integer>();
+		ArrayList<Integer> dailyPartTime=new ArrayList<Integer>();
+
 
 
 		//it will generate employee wages for number of time user want to perform
@@ -88,11 +101,12 @@ public  class PresentAbsent{
 
 			Log.info("Compony :"+countCompany);
 			Employee object=new  Employee();
-			
-			arr.add(object.Compute());		//Storing the values in array
-			
+
+			dailyFullTime.add(Employee.store);
+			dailyPartTime.add(Employee.store);
+			arr.add(object.Compute());		//Storing the values in array list
 			Log.info("Employee Working Day:"+object.WorkingDayParMonth+" \nEmployee working Hrs:"+object.WarkingHourDay+": "+ "\nTotal is: " +arr );
-			index++;//increasing array index value 
+
 			mul--;
 		}
 	}  
