@@ -1,19 +1,30 @@
 package Day8_Programs;
 
-import java.awt.geom.Area;
+
 import java.util.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-class Employee {
-
-	private static final Logger Log= LogManager.getLogger(PresentAbsent.class);
-
+interface EmployeeBuilder{
 	final int FullDay = 8;
 	final int WageParHour = 20;
 	final int empPresent = 1;
 	final int empPartTime=0;
 	final int empPartTimeHrs=4;
+	
+	
+	
+	public int Compute();
+	
+	
+}
+
+
+
+class Employee implements EmployeeBuilder  {
+
+	private static final Logger Log= LogManager.getLogger(PresentAbsent.class);
+
 	static  int WorkingDayParMonth = 20;
 	static int WarkingHourDay = 100;
 
@@ -21,10 +32,10 @@ class Employee {
 		Scanner sc=new Scanner(System.in);
 
 		Log.info("Enter Total Working Hrs: ");
-		int WorkingDayParMonth=sc.nextInt();
+		this.WorkingDayParMonth=sc.nextInt();
 
 		Log.info("Enter Total Working Day: ");
-		int WarkingHourDay=sc.nextInt();
+		this.WarkingHourDay=sc.nextInt();
 
 
 		//Generating random value from 0 to 2
@@ -45,7 +56,7 @@ class Employee {
 		case empPartTime: //if random value is 0 then employee is part time
 			int partTimeWage=empPartTimeHrs*WorkingDayParMonth*WarkingHourDay;
 			Log.info("Employee is Part Time Present");
-			Log.info("Employee Part Time 20 Day and 100 Hrs Wage Is : "+ partTimeWage);
+			
 			return partTimeWage;
 
 
@@ -83,7 +94,7 @@ public  class PresentAbsent{
 			Employee object=new  Employee();
 
 			arr[index]=object.Compute();//Storing the values in array
-			Log.info("Employee Working Day:"+object.WorkingDayParMonth+" \nEmployee working Hrs:"+object.WarkingHourDay+": "+ arr[index]);
+			Log.info("Employee Working Day:"+object.WorkingDayParMonth+" \nEmployee working Hrs:"+object.WarkingHourDay+": "+ "\nTotal is: " + arr[index]);
 			index++;//increasing array index value 
 			mul--;
 		}
