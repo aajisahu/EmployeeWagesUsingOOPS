@@ -14,15 +14,14 @@ interface EmployeeBuilder{
 
 
 	public int Compute();
-
-
+	
 }
 
 
 class Employee implements EmployeeBuilder  {
 
 	private static final Logger Log= LogManager.getLogger(PresentAbsent.class);
-	static  int WorkingDayParMonth = 20;
+	static int WorkingDayParMonth = 20;
 	static int WarkingHourDay = 100;
 	int storeDailyFullTime=8;
 	int storeDailyPartTime=4;
@@ -33,10 +32,10 @@ class Employee implements EmployeeBuilder  {
 		Scanner sc=new Scanner(System.in);
 
 		Log.info("Enter Total Working Hrs: ");
-		this.WorkingDayParMonth=sc.nextInt();
+		Employee.WorkingDayParMonth=sc.nextInt();
 
 		Log.info("Enter Total Working Day: ");
-		this.WarkingHourDay=sc.nextInt();
+		Employee.WarkingHourDay=sc.nextInt();
 
 
 		//Generating random value from 0 to 2
@@ -72,6 +71,8 @@ class Employee implements EmployeeBuilder  {
 		}
 
 	}
+
+	
 }
 
 public  class PresentAbsent{
@@ -92,8 +93,6 @@ public  class PresentAbsent{
 		ArrayList<Integer> dailyFullTime=new ArrayList<Integer>();
 		ArrayList<Integer> dailyPartTime=new ArrayList<Integer>();
 
-
-
 		//it will generate employee wages for number of time user want to perform
 		while(mul !=0) {
 			countCompany=countCompany+1;
@@ -105,10 +104,23 @@ public  class PresentAbsent{
 			dailyFullTime.add(Employee.store);
 			dailyPartTime.add(Employee.store);
 			arr.add(object.Compute());		//Storing the values in array list
-			Log.info("Employee Working Day:"+object.WorkingDayParMonth+" \nEmployee working Hrs:"+object.WarkingHourDay+": "+ "\nTotal is: " +arr );
-
-			mul--;
+						mul--;	
+		
 		}
+		
+		// asking user to he wants to print the total or not
+		Log.info("Do You Want to Print Total: Y/N");
+		char getTot=multiple.next().charAt(0);
+		if (getTot =='Y'||getTot =='y' ) {
+			
+			Log.info("Employee Working Day:"+Employee.WorkingDayParMonth+" \nEmployee working Hrs:"+Employee.WarkingHourDay+": "+ "\nTotal is: " +arr );
+				
+		}
+		else {
+			Log.info("You Made A Wrong Choice:");
+		}
+		
+	
 	}  
 
 }
